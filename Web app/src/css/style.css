@@ -1,28 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital@1&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
 
-.logo-navbar{
+.logo-navbar {
     width: 6rem;
 }
-.nav{
+
+.nav {
     background-color: white;
     width: 100%;
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.primernavbar{
+
+.primernavbar {
     margin-bottom: 3rem;
     border-bottom: 3px solid rgb(182, 169, 169);
 }
-.title{
+
+.title {
     font-size: 3rem;
-    font-family: 'Exo 2', sans-serif;
+    font-family: sans-serif;
     color: rgb(23, 119, 209);
 }
-.otro{
+
+.otro {
     justify-content: space-between;
 }
-footer .container{
+
+footer .container-footer {
+    padding: 1rem;
+    width: 100%;
     border-top: 3px solid rgb(182, 169, 169);
     margin-top: 2rem;
     justify-content: center;
@@ -30,46 +40,65 @@ footer .container{
     align-items: center;
     display: flex;
 }
-footer .container i{
+
+footer .container-footer i {
     scale: 1.5;
     opacity: 0.5;
 }
-.file{
-    width: 2rem;
-    background-color: red;
-}
-.imagebody{
-    opacity: 0.8;
-    width: 80%;
-    height: 90vh;
+
+.imagebody {
+    opacity: 0.9;
+    width: 95%;
+    height: 100vh;
     background-image: url(../assets/img/gato.jpg);
+    background-size: cover;
+    text-align: center;
+    background-position: center;
     z-index: -1;
     border-radius: 30px;
 }
 
-.img-box{
+.img-box {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.menunavbarbody{
+.menunavbarbody {
     border-radius: 20px;
     padding: 1rem;
     width: 80%;
     height: 4.5rem;
-    background-color: red;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 1); 
     display: flex;
+    align-items: center;
     gap: 3rem;
 }
-.btn-clasificar{
+
+.btn-clasificar {
     height: 50px;
     border-radius: 50px !important;
 }
-.menubody{
+
+.menubody {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
+}
 
+.desplegable {
+    background-color: white !important;
+    color: black;
+}
+.texto{
+    margin-top: 3rem;
+    text-shadow: 
+      -1px -1px 0 #000, 
+       1px -1px 0 #000, 
+      -1px  1px 0 #000, 
+       1px  1px 0 #000; 
+    font-size: 6rem;
+    color: white;
 }

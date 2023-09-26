@@ -33,17 +33,17 @@
     </nav>
 
     <!-- contenido del body -->
-
     <div class="menubody">
         <div class="menunavbarbody">
             <input class="form-control url" type="search" placeholder="Ingresa la url de la imagen a buscar"
                 aria-label="Search">
-            <input type="file" class="form-control file" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            <label class="btn btn-secondary col-2 cargar-archivo d-flex gap-2"><input type="file"
+                    style="display: none;"><i class="bi bi-arrow-up-circle"></i> Cargar imagen</label>
 
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                <button class="btn dropdown-toggle desplegable" type="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    Dropdown button
+                    Seleccionar idioma
                 </button>
                 <ul class="dropdown-menu">
                     <li value="es" class="dropdown-item">Español</li>
@@ -52,29 +52,26 @@
                     <li value="pt" class="dropdown-item">Portugues</li>
                 </ul>
             </div>
-            <button class="btn btn-primary btn-clasificar d-flex gap-2">Clasificar<i
+            <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg">Clasificar<i
                     class="bi bi-eye-fill"></i></button>
         </div>
     </div>
 
-
-
+    <!-- contenedor que renderiza la imagen principal -->
     <div class="img-box">
         <div class="imagebody">
+            <h1 class="texto">Hola que hace</h1>
         </div>
     </div>
-
-    
 
 
     <!-- contenido del footer -->
     <footer>
-        <div class="container">
+        <div class="container-footer">
             <div> &copy; 2023 SENASOFT </div>
             <i class="bi bi-microsoft"></i>
         </div>
     </footer>
-
 
 
     <!-- script de bootstrap para manejo de eventos y transiciones -->
@@ -83,6 +80,7 @@
         crossorigin="anonymous"></script>
     <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
     <script src="./src/js/app.js"></script>
+
 </body>
 
 </html>
