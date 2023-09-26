@@ -7,21 +7,80 @@
     <!-- Titulo de pestaña de la pagina inicial -->
     <title>AI | Azure services</title>
     <!-- Enlace del icono de la pestaña -->
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2301/2301463.png" type="image/x-icon">
+    <link rel="icon" href="src/assets/img/logo.png" type="image/x-icon">
+    <!-- Link hacia hoja de estilos local -->
+    <link rel="stylesheet" href="src/css/style.css">
+
     <!-- CDN de axios para realizar peticiones http y https -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- CDN de bootstrap para control de estilos -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- CDN de boostrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
 </head>
 
 <body>
-    <h1>Hola que hace!!!</h1>
+    <!-- contenido del navbar -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary primernavbar">
+        <div class="nav">
+            <img src="src/assets/img/logo.png" class="logo-navbar" alt="logo pagina web">
+            <div class="title">Clasificación y traducción de imagenes</div>
+            <button class="btn btn-dark" type="submit"><i class="bi bi-moon-fill"></i></button>
+        </div>
+    </nav>
+
+    <!-- contenido del body -->
+
+    <div class="menubody">
+        <div class="menunavbarbody">
+            <input class="form-control url" type="search" placeholder="Ingresa la url de la imagen a buscar"
+                aria-label="Search">
+            <input type="file" class="form-control file" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Dropdown button
+                </button>
+                <ul class="dropdown-menu">
+                    <li value="es" class="dropdown-item">Español</li>
+                    <li value="en" class="dropdown-item">Inglés</li>
+                    <li value="fr" class="dropdown-item">Francés</li>
+                    <li value="pt" class="dropdown-item">Portugues</li>
+                </ul>
+            </div>
+            <button class="btn btn-primary btn-clasificar d-flex gap-2">Clasificar<i
+                    class="bi bi-eye-fill"></i></button>
+        </div>
+    </div>
+
+
+
+    <div class="img-box">
+        <div class="imagebody">
+        </div>
+    </div>
+
+    
+
+
+    <!-- contenido del footer -->
+    <footer>
+        <div class="container">
+            <div> &copy; 2023 SENASOFT </div>
+            <i class="bi bi-microsoft"></i>
+        </div>
+    </footer>
 
 
 
     <!-- script de bootstrap para manejo de eventos y transiciones -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
     <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
     <script src="./src/js/app.js"></script>
 </body>

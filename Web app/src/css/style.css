@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital@1&display=swap');
+
+.logo-navbar{
+    width: 6rem;
+}
+.nav{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.primernavbar{
+    margin-bottom: 3rem;
+    border-bottom: 3px solid rgb(182, 169, 169);
+}
+.title{
+    font-size: 3rem;
+    font-family: 'Exo 2', sans-serif;
+    color: rgb(23, 119, 209);
+}
+.otro{
+    justify-content: space-between;
+}
+footer .container{
+    border-top: 3px solid rgb(182, 169, 169);
+    margin-top: 2rem;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    display: flex;
+}
+footer .container i{
+    scale: 1.5;
+    opacity: 0.5;
+}
+.file{
+    width: 2rem;
+    background-color: red;
+}
+.imagebody{
+    opacity: 0.8;
+    width: 80%;
+    height: 90vh;
+    background-image: url(../assets/img/gato.jpg);
+    z-index: -1;
+    border-radius: 30px;
+}
+
+.img-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menunavbarbody{
+    border-radius: 20px;
+    padding: 1rem;
+    width: 80%;
+    height: 4.5rem;
+    background-color: red;
+    display: flex;
+    gap: 3rem;
+}
+.btn-clasificar{
+    height: 50px;
+    border-radius: 50px !important;
+}
+.menubody{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+}
