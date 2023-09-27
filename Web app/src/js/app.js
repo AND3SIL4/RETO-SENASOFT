@@ -117,7 +117,9 @@ function seleccionarIdioma(elemento) {
                     ? "Francés"
                     : languageValue === "pt"
                         ? "Portugués"
-                        : "Otro"
+                        : languageValue === "de" 
+                        ? "Aleman"
+                        : "No encontrado"
             }`;
 
         // Resuelve la promesa con el valor del idioma seleccionado
