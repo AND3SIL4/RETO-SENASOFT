@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.logo-navbar {
+  width: 6rem;
+}
+
+.nav {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.primernavbar {
+  margin-bottom: 3rem;
+  border-bottom: 3px solid rgb(182, 169, 169);
+}
+
+.title {
+  font-size: 3rem;
+  font-family: sans-serif;
+  color: rgb(23, 119, 209);
+}
+
+.other > a {
+  text-decoration: none;
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.coordenadas {
+  position: absolute;
+  border: 3px solid rgba(255, 0, 0, 0.445);
+}
+
+.analize-box {
+  margin-top: 10%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: black;
+  color: aliceblue;
+  width: 50%;
+  height: auto;
+  font-family: "Quicksand", sans-serif;
+  border-radius: 30px;
+  border: 2px solid aqua;
+}
+
+input {
+  padding: 2%;
+  border-radius: 5px;
+  width: 60%;
+  font-family: "Quicksand", sans-serif;
+  font-size: 18px;
+}
+
+button {
+  font-family: "Quicksand", sans-serif;
+  margin-top: 5%;
+  padding: 2%;
+  background-color: aqua;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+img {
+  height: auto;
+  width: 100%;
+  border-radius:0px 0px 20px 20px;
+}
+
+.button-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+}
+
+#result {
+  color: white;
+  font-size: 20px;
+  border-bottom: 1px solid aqua;
+}
+
+.img-box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container-img {
+  height: 100px;
+  width: 30%;
+  border: 1px solid rgb(167, 194, 219);
+  border-radius: 10px;
+  margin: 20px;
+}
+
+.btn-clasificar {
+  height: 50px;
+  border-radius: 50px !important;
+}
+
+.urls-input {
+  margin: 10px;
+  width: 90% !important;
+}
+
+footer {
+  position: relative;
+  top: 50px;
+}
+
+footer .container-footer {
+  padding: 1rem;
+  width: 100%;
+  border-top: 3px solid rgb(182, 169, 169);
+  margin-top: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+  display: flex;
+}
+
+footer .container-footer i {
+  scale: 1.5;
+  opacity: 0.5;
+}

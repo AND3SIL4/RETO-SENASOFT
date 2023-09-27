@@ -1,136 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Titulo de pestaña de la pagina inicial -->
     <title>AI | Azure services</title>
 
     <!-- Enlace del icono de la pestaña -->
-    <link rel="icon" href="src/assets/img/logo.png" type="image/x-icon">
+    <link rel="icon" href="src/assets/img/logo.png" type="image/x-icon" />
 
     <!-- Link hacia hoja de estilos local -->
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/face.css" />
 
     <!-- CDN de axios para realizar peticiones http y https -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- CDN de bootstrap para control de estilos -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
 
     <!-- CDN de boostrap icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <!-- js file -->
     <script src="./src/js/axios.js"></script>
 
     <!-- script de bootstrap para manejo de eventos y transiciones -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <!-- contenido del navbar -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary primernavbar">
-        <div class="nav">
-            <img src="src/assets/img/logo.png" class="logo-navbar" alt="logo pagina web">
-            <div class="title">Clasificación y traducción de imagenes</div>
+      <div class="nav">
+        <img
+          src="src/assets/img/logo.png"
+          class="logo-navbar"
+          alt="logo pagina web"
+        />
+        <div class="title">Detección de Rostros</div>
 
-            <div class="other">
-                <a href="face.html">face</a>
-                <a href="detection">Detección</a>
-            </div>
-
-
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary bottom-trigger" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                <i class="bi bi-chat-right-dots-fill"></i>
-            </button>
-
-            <!-- Modal - tarjeta para el chat bot -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <div class="card-header text-black">Chatbot SENASOFT</div>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="container" style="
-                        padding-right: 0px;
-                        padding-left: 0px;">
-                            <div class="card">
-                                <div class="card-body" id="chat-container">
-                                    <!-- Aquí se mostrarán los mensajes del chat -->
-                                </div>
-                                <div class="card-footer d-flex gap-3">
-                                    <input type="text" id="user-input" class="form-control"
-                                        placeholder="Escribe un mensaje...">
-                                    <button id="send-btn" class="btn btn-primary btn-block w-25">Enviar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="other">
+          <a href="index.html">inicio</a>
+          <a href="detection">Detección</a>
         </div>
+
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-primary bottom-trigger"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          <i class="bi bi-chat-right-dots-fill"></i>
+        </button>
+
+        <!-- Modal - tarjeta para el chat bot -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="card-header text-black">Chatbot SENASOFT</div>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div
+                class="container"
+                style="padding-right: 0px; padding-left: 0px"
+              >
+                <div class="card">
+                  <div class="card-body" id="chat-container">
+                    <!-- Aquí se mostrarán los mensajes del chat -->
+                  </div>
+                  <div class="card-footer d-flex gap-3">
+                    <input
+                      type="text"
+                      id="user-input"
+                      class="form-control"
+                      placeholder="Escribe un mensaje..."
+                    />
+                    <button
+                      id="send-btn"
+                      class="btn btn-primary btn-block w-25"
+                    >
+                      Enviar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
 
-    <!-- Contenedor principal del body -->
-    <div class="contenedor-principal">
-        <!-- contenido del body -->
-        <div class="menubody">
-            <div class="menunavbarbody">
-                <input class="form-control url" type="search" id="input-imagen"
-                    placeholder="Ingresa la url de la imagen a buscar" aria-label="Search">
-                <label class="btn btn-secondary col-2 cargar-archivo d-flex gap-2"><input id="load-file" type="file"
-                        style="display: none;"><i class="bi bi-arrow-up-circle"></i>Cargar imagen</label>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle desplegable" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Seleccionar idioma
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li value="es" class="dropdown-item">Español</li>
-                        <li value="en" class="dropdown-item">Inglés</li>
-                        <li value="fr" class="dropdown-item">Francés</li>
-                        <li value="pt" class="dropdown-item">Portugues</li>
-                    </ul>
-                </div>
-                <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg"
-                    id="button-classification">Clasificar<i class="bi bi-eye-fill"></i></button>
-            </div>
+    <!-- contenido de la aplicación de face Api -->
+
+    <div class="content-face">
+      <!-- contenedor que contiene todas las imágenes analizadas -->
+      <div class="img-box">
+
+        <div class="container-img">
+          <input
+            class="form-control url  urls-input"
+            type="search"
+            id="input-imagen-1"
+            placeholder="Ingresa la url #1"
+            aria-label="Search"
+          />
+
+          <img id="imagenObjeto" />
+
+          <div id="coordenadas" class="coordenadas"></div>
         </div>
 
+        <div class="container-img">
+          <input
+            class="form-control url urls-input"
+            type="search"
+            id="input-imagen-2"
+            placeholder="Ingresa la url #2"
+            aria-label="Search"
+          />
 
+          <img id="imagenObjeto" />
 
-        <!-- contenedor que renderiza la imagen principal -->
-        <div class="img-box">
-            <div class="imagebody" id="contenedor-imagen">
-                <h2 class="texto" id="description-image">Descripción de la imagen</h2>
-                <!-- Aqui se renderiza el la imagen  -->
-            </div>
+          <div id="coordenadas" class="coordenadas"></div>
         </div>
 
-        <!-- contenido del footer -->
-        <footer>
-            <div class="container-footer">
-                <div> &copy; 2023 SENASOFT </div>
-                <i class="bi bi-microsoft"></i>
-            </div>
-        </footer>
+        <div class="container-img">
+          <input
+            class="form-control url urls-input"
+            type="search"
+            id="input-imagen-3"
+            placeholder="Ingresa la url #3"
+            aria-label="Search"
+          />
 
+          <img id="imagenObjeto"/>
 
-        <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
-        <script src="./src/js/app.js"></script>
+          <div id="coordenadas" class="coordenadas"></div>
+        </div>
 
-</body>
+      </div>
 
+      <div class="button-div">
+        <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg"
+                    id="analizeButton">Analizar imágenes<i class="bi bi-eye-fill"></i></button>
+      </div>
+
+    </div>
+    <!-- contenido del footer -->
+    <footer>
+      <div class="container-footer">
+        <div>&copy; 2023 SENASOFT</div>
+        <i class="bi bi-microsoft"></i>
+      </div>
+    </footer>
+
+    <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
+    <script src="./src/js/face.js"></script>
+  </body>
 </html>
-
-         
