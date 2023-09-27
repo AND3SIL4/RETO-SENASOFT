@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 // Claves para el servicio de predicción
 const PREDICTION_URL =
     "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/9e9619cc-7f2b-4bca-9392-be426e317aae/classify/iterations/Modelo%20de%20clasificaci%C3%B3n/url";
@@ -96,7 +94,7 @@ function consumeAPIWithUrl(imageFromTUrl) {
             .catch((error) => {
                 console.error(error);
                 descriptionDiv.innerHTML = 'Error al analizar la imagen por favor intente de nuevo'
-                alert(`Un error ha ocurrido: ${error}`);
+                alert(`Un error ha ocurrido por favor intente de nuevo`);
                 reject(error); // Rechazamos la promesa en caso de error
             });
     });
@@ -144,7 +142,7 @@ listaIdiomas.forEach(function (elemento) {
 
 
 // funcion para obtener la traduccion del contenido
-async function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
+function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
     axios({
         baseURL: TRASLATOR_URL,
         // usar 'detect', para solo detectar el idioma
@@ -190,8 +188,8 @@ btn.addEventListener("click", async () => {
         // Llamar a las funciones utilizando async/await
         await consumeAPIWithUrl(inputImagen.value); // funcion para hacer llamado con entrada de url
 
-        // Luego, puedes utilizar las variables respuesta y languageValue aquí
-        await hacerTraduccion(respuesta, languageValue);
+        // Llamar a la funcion para hacer la traduccion del contenido dado por el modelo de clasificacion
+        hacerTraduccion(respuesta, languageValue);
     } catch (error) {
         console.error(error);
     }
