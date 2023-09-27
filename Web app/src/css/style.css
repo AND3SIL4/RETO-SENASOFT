@@ -56,7 +56,8 @@ footer .container-footer i {
     z-index: -1;
     border-radius: 30px;
 }
-.imagebody:hover{
+
+.imagebody:hover {
     cursor: pointer !important;
     opacity: 1;
 }
@@ -98,80 +99,93 @@ footer .container-footer i {
     color: black;
 }
 
-.dropdown ul li:hover{
+.dropdown ul li:hover {
     cursor: pointer !important;
-    background-color: #0b5ed7; /*cambiar color*/
+    background-color: #0b5ed7;
+    /*cambiar color*/
     color: white;
 }
 
-.texto{
+.texto {
     margin-top: 3rem;
-    text-shadow: 
-      -1px -1px 0 #000, 
-       1px -1px 0 #000, 
-      -1px  1px 0 #000, 
-       1px  1px 0 #000; 
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
     font-size: 6rem;
     color: white;
 }
-.bottom-trigger{
+
+.bottom-trigger {
     height: 3.5rem;
     width: 3.5rem;
 }
-.bottom-trigger i{
+
+.bottom-trigger i {
     font-size: 30px;
 }
-.img-box:hover{
+
+.img-box:hover {
     cursor: pointer;
     opacity: 1;
 }
 
-.img-box{
+.img-box {
     opacity: 0.9;
     transition: all 300ms;
 }
 
-.btn-clasificar:hover{
+.btn-clasificar:hover {
     scale: 1.1;
     transition: all 300ms;
 }
 
-.cargar-archivo:hover{
+.cargar-archivo:hover {
     scale: 1.1;
     transition: all 300ms;
 }
 
 .card {
     width: 100%;
-  }
+}
 
-  #chat-container {
+#chat-container {
     height: 25rem;
     overflow-y: scroll;
-  }
-  
-  .card-footer {
+}
+
+.container{
+    padding: 0;
+}
+.card-footer {
     height: 4rem;
     background-color: #f8f9fa;
-  }
-  .user-message, .bot-message{
+}
+
+.user-message,
+.bot-message {
     margin-top: 10px;
     border-radius: 20px;
     padding: 10px 20px;
-  
-    border: 1px solid #ccc; /* Borde de 1 píxel y color gris claro */
-    background-color: #f9f9f9; /* Fondo gris claro */
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    margin-bottom: 10px; 
-  }
-  .bot-message{
+
+    border: 1px solid #ccc;
+    /* Borde de 1 píxel y color gris claro */
+    background-color: #f9f9f9;
+    /* Fondo gris claro */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    /* Sombra suave */
+    margin-bottom: 10px;
+}
+
+.bot-message {
     margin-right: 45%;
     color: white;
     background-color: blue;
-  }
-  
-  .user-message{
+}
+
+.user-message {
     margin-left: 45%;
     text-align: end;
     border: 1px solid rgb(178, 187, 196);
-  }
+}
