@@ -98,3 +98,4 @@ btn.addEventListener("click", () => {
     consumeAPIWithUrl(inputImagen.value); // funcion para hacer llamado con entrada de url
     // consumeAPIwithLocalFile(file); // funcion para hacer llamada con entrada de archivos locales
 });
+
