@@ -4,7 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const imageUrlImg2 = document.getElementById("input-imagen-2");
   const imageUrlImg3 = document.getElementById("input-imagen-3");
   const resultDiv = document.getElementById("result");
-  const coordenadasBox = document.getElementById("container");
+    const descriptionDiv1 = document.getElementById("description1");
+    const descriptionDiv2 = document.getElementById("description2");
+    const descriptionDiv3 = document.getElementById("description3");
+
 
   analyzeButton.addEventListener("click", analyzeImage);
 
@@ -57,16 +60,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((result) => {
         console.log(result);
-
-        result.forEach((face) => {
-          const coordenadas = document.createElement("div");
-          coordenadas.className = "coordenadas";
-          coordenadas.style.height = `${face.faceRectangle.height}px`;
-          coordenadas.style.width = `${face.faceRectangle.width}px`;
-          coordenadas.style.top = `${face.faceRectangle.top}px`;
-          coordenadas.style.left = `${face.faceRectangle.left}px`;
-          coordenadasBox.appendChild(coordenadas);
-        });
+        const item = result;
+        descriptionDiv1.innerHTML = `en total hay ${item.length} caras`;
       });
 
     fetch(
@@ -77,20 +72,12 @@ document.addEventListener("DOMContentLoaded", function () {
         body: body2,
       }
     )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-
-      result.forEach((face) => {
-        const coordenadas = document.createElement("div");
-        coordenadas.className = "coordenadas";
-        coordenadas.style.height = `${face.faceRectangle.height}px`;
-        coordenadas.style.width = `${face.faceRectangle.width}px`;
-        coordenadas.style.top = `${face.faceRectangle.top}px`;
-        coordenadas.style.left = `${face.faceRectangle.left}px`;
-        coordenadasBox.appendChild(coordenadas);
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        const item = result;
+        descriptionDiv2.innerHTML = `en total hay ${item.length} caras`;
       });
-    });
     fetch(
       `${Url}face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
       {
@@ -99,20 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
         body: body3,
       }
     )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
-
-      result.forEach((face) => {
-        const coordenadas = document.createElement("div");
-        coordenadas.className = "coordenadas";
-        coordenadas.style.height = `${(face.faceRectangle.height)*0.3}px`;
-        coordenadas.style.width = `${(face.faceRectangle.width)*0.3}px`;
-        coordenadas.style.top = `${face.faceRectangle.top}px`;
-        coordenadas.style.left = `${face.faceRectangle.left}px`;
-        coordenadasBox.appendChild(coordenadas);
+      .then((response) => response.json())
+      .then((result) => {
+        const item = result;
+        console.log(item);
+        descriptionDiv3.innerHTML = `en total hay ${item.length} caras`;
       });
-    });
   }
 });
 
