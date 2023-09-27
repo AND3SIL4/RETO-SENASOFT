@@ -116,3 +116,4 @@ function traducirResultado(codigoIso, respuesta) {
 btn.addEventListener("click", () => {
   consume(inputImagen.value);
 });
+
