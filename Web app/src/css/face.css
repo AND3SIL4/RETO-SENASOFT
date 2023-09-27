@@ -35,7 +35,7 @@
 }
 
 .coordenadas {
-  position: absolute;
+  position: relative;
   border: 3px solid rgba(255, 0, 0, 0.445);
 }
 
@@ -75,7 +75,6 @@ button {
 img {
   height: auto;
   width: 100%;
-  border-radius:0px 0px 20px 20px;
 }
 
 .button-div{
@@ -139,4 +138,11 @@ footer .container-footer i {
 
 .result{
     color: black ;
+}
+
+.description{
+    align-items: center;
+    display: flex;
+    justify-content: center ;
+    color: gray;
 }
