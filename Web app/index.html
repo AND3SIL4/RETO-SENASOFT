@@ -84,9 +84,9 @@
                     placeholder="Ingresa la url de la imagen a buscar" aria-label="Search">
                 <label class="btn btn-secondary col-2 cargar-archivo d-flex gap-2"><input id="load-file" type="file"
                         style="display: none;"><i class="bi bi-arrow-up-circle"></i>Cargar imagen</label>
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle desplegable" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
+                <div class="div-dropdown">
+                    <button id="selecLanguage"  type="button" class="btn btn-primary dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
                         Seleccionar idioma
                     </button>
                     <ul class="dropdown-menu">
@@ -96,32 +96,33 @@
                         <li value="pt" class="dropdown-item">Portugues</li>
                     </ul>
                 </div>
-                <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg"
-                    id="button-classification">Clasificar<i class="bi bi-eye-fill"></i></button>
+                <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg" id="button-classification">Clasificar<i
+                        class="bi bi-eye-fill"></i></button>
             </div>
         </div>
+    </div>
 
 
 
-        <!-- contenedor que renderiza la imagen principal -->
-        <div class="img-box">
-            <div class="imagebody" id="contenedor-imagen">
-                <h2 class="texto" id="description-image">Descripción de la imagen</h2>
-                <!-- Aqui se renderiza el la imagen  -->
-            </div>
+    <!-- contenedor que renderiza la imagen principal -->
+    <div class="img-box">
+        <div class="imagebody" id="contenedor-imagen">
+            <h2 class="texto" id="description-image">Descripción de la imagen</h2>
+            <!-- Aqui se renderiza el la imagen  -->
         </div>
+    </div>
 
-        <!-- contenido del footer -->
-        <footer>
-            <div class="container-footer">
-                <div> &copy; 2023 SENASOFT </div>
-                <i class="bi bi-microsoft"></i>
-            </div>
-        </footer>
+    <!-- contenido del footer -->
+    <footer>
+        <div class="container-footer">
+            <div> &copy; 2023 SENASOFT </div>
+            <i class="bi bi-microsoft"></i>
+        </div>
+    </footer>
 
 
-        <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
-        <script src="./src/js/app.js"></script>
+    <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
+    <script src="./src/js/app.js"></script>
 
 </body>
 

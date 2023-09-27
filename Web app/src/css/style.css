@@ -76,9 +76,14 @@ footer .container-footer i {
     background-color: white;
     border: 1px solid rgb(204, 200, 200);
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 3rem;
 }
+/* #selecLanguage{
+    height: 40px;
+
+} */
 
 .btn-clasificar {
     height: 50px;
@@ -99,7 +104,7 @@ footer .container-footer i {
     color: black;
 }
 
-.dropdown ul li:hover {
+.div-dropdown ul li:hover {
     cursor: pointer !important;
     background-color: #0b5ed7;
     /*cambiar color*/
