@@ -98,7 +98,7 @@ img {
 }
 
 .container-img {
-  height: 30%;
+  height: auto;
   width: 30%;
   border: 1px solid rgb(167, 194, 219);
   border-radius: 20px;
