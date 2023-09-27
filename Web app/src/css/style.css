@@ -49,7 +49,7 @@ footer .container-footer i {
 .imagebody {
     width: 95%;
     height: 100vh;
-    background-image: url(../assets/img/gato.jpg);
+    background-image: url(../assets/img/default-wallpaper.jpg);
     background-size: cover;
     text-align: center;
     background-position: center;
