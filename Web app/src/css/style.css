@@ -189,3 +189,9 @@ footer .container-footer i {
     text-align: end;
     border: 1px solid rgb(178, 187, 196);
 }
+
+.other > a{
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 20px;
+}
