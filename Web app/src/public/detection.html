@@ -79,88 +79,45 @@
         </div>
     </nav>
 
-    <!-- Contenido del body de la pagina detection -->
-    <div class="container mt-5 d-flex">
+
+    <!-- body -->
+    <div class="container mt-5">
         <div class="row">
             <div class="mt-4">
                 <div class="form-group">
-                    <label for="urlImagen1">Perro</label>
+                    <label for="urlImagen">Ingrese la URL de la imagen:</label>
                     <div class="imagen d-flex gap-2 mt-3">
-                        <input type="text" class="form-control" id="urlImagen1"
-                            placeholder="https://www.ejemplo.com/imagen.jpg" />
+                        <input type="text" class="form-control" id="urlImagen"
+                            placeholder="Ejemplo: https://www.ejemplo.com/imagen.jpg" />
                     </div>
                 </div>
             </div>
             <div class="">
-                <div id="imagenContainer1" class="mt-3">
+                <div id="imagenContainer" class="mt-3">
                     <!-- Aquí se mostrará la imagen -->
                 </div>
-                <p>El contenido de la imagen y el resultado se mostrarán aquí</p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="mt-4">
-                <div class="form-group">
-                    <label for="urlImagen2">Pato</label>
-                    <div class="imagen d-flex gap-2 mt-3">
-                        <input type="text" class="form-control" id="urlImagen2"
-                            placeholder="https://www.ejemplo.com/imagen.jpg" />
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div id="imagenContainer2" class="mt-3">
-                    <!-- Aquí se mostrará la imagen -->
-                </div>
-                <p>El contenido de la imagen y el resultado se mostrarán aquí</p>
-            </div>
-        </div>
-
-        
-
-        <div class="row">
-            <div class="mt-4">
-                <div class="form-group">
-                    <label for="urlImagen3">Persona</label>
-                    <div class="imagen d-flex gap-2 mt-3">
-                        <input type="text" class="form-control" id="urlImagen3"
-                            placeholder="https://www.ejemplo.com/imagen.jpg" />
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div id="imagenContainer3" class="mt-3">
-                    <!-- Aquí se mostrará la imagen -->
-                </div>
-                <p>El contenido de la imagen y el resultado se mostrarán aquí</p>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="mt-4">
-                <div class="form-group">
-                    <label for="urlImagen1">General</label>
-                    <div class="imagen d-flex gap-2 mt-3">
-                        <input type="text" class="form-control" id="urlImagen4"
-                            placeholder="https://www.ejemplo.com/imagen.jpg" />
-                    </div>
-                </div>
-            </div>
-            <div class="">
-                <div id="imagenContainer4" class="mt-3">
-                    <!-- Aquí se mostrará la imagen -->
-                </div>
-                <p>El contenido de la imagen y el resultado se mostrarán aquí</p>
             </div>
         </div>
     </div>
+
 
     <!-- Boton que hace el llamado a la api -->
     <div class="div-boton">
         <button class="btn btn-primary boton-consultar" id="boton">Consultar</button>
     </div>
+
+
+    <!-- contenido del footer -->
+    <footer>
+        <div class="container-footer">
+            <div> &copy; 2023 SENASOFT </div>
+            <a href="https://learn.microsoft.com/es-mx/"><i class="bi bi-microsoft"></i></a>
+        </div>
+    </footer>
+
+
+    <!-- <script type="module" src="js/renderImage.js"></script> -->
+    <script src="pruebaSpeech.js"></script>
 
     <!-- Script local para logica de negocio -->
     <script src="../js/detection.js"></script>
