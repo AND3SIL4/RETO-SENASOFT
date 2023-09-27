@@ -54,41 +54,20 @@ document.addEventListener("DOMContentLoaded", function () {
         body: body1,
       }
     )
-    .then((response) => response.json())
-    .then((result) => {
-      console.log(result);
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
 
-      // Obtén la referencia a la imagen
-      const imagen = document.getElementById("imagenObjeto");
-
-      // Obtén el ancho y el alto de la imagen
-      const imagenAncho = imagen.offsetWidth;
-      const imagenAlto = imagen.offsetHeight;
-
-      // Calcula el factor de escala en función del ancho de la imagen
-      const escalaAncho = (imagenAncho * 0.3) / 100;
-
-      result.forEach((face) => {
-        const coordenadas = document.createElement("div");
-        coordenadas.className = "coordenadas";
-
-        // Calcula las dimensiones de las coordenadas en función del factor de escala
-        const coordenadasAncho = face.faceRectangle.width * escalaAncho;
-        const coordenadasAlto = face.faceRectangle.height * escalaAncho;
-
-        // Calcula las posiciones de las coordenadas en función del factor de escala
-        const coordenadasLeft = face.faceRectangle.left * escalaAncho;
-        const coordenadasTop = face.faceRectangle.top * escalaAncho;
-
-        coordenadas.style.height = `${coordenadasAlto}px`;
-        coordenadas.style.width = `${coordenadasAncho}px`;
-        coordenadas.style.top = `${coordenadasTop}px`;
-        coordenadas.style.left = `${coordenadasLeft}px`;
-
-        coordenadasBox.appendChild(coordenadas);
+        result.forEach((face) => {
+          const coordenadas = document.createElement("div");
+          coordenadas.className = "coordenadas";
+          coordenadas.style.height = `${face.faceRectangle.height}px`;
+          coordenadas.style.width = `${face.faceRectangle.width}px`;
+          coordenadas.style.top = `${face.faceRectangle.top}px`;
+          coordenadas.style.left = `${face.faceRectangle.left}px`;
+          coordenadasBox.appendChild(coordenadas);
+        });
       });
-    });
-
 
     fetch(
       `${Url}face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
@@ -98,41 +77,20 @@ document.addEventListener("DOMContentLoaded", function () {
         body: body2,
       }
     )
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
 
-        // Obtén la referencia a la imagen
-        const imagen = document.getElementById("imagenObjeto1");
-
-        // Obtén el ancho y el alto de la imagen
-        const imagenAncho = imagen.offsetWidth;
-        const imagenAlto = imagen.offsetHeight;
-
-        // Calcula el factor de escala en función del ancho de la imagen
-        const escalaAncho = (imagenAncho * 0.3) / 100;
-
-        result.forEach((face) => {
-          const coordenadas = document.createElement("div");
-          coordenadas.className = "coordenadas";
-
-          // Calcula las dimensiones de las coordenadas en función del factor de escala
-          const coordenadasAncho = face.faceRectangle.width * escalaAncho;
-          const coordenadasAlto = face.faceRectangle.height * escalaAncho;
-
-          // Calcula las posiciones de las coordenadas en función del factor de escala
-          const coordenadasLeft = face.faceRectangle.left * escalaAncho;
-          const coordenadasTop = face.faceRectangle.top * escalaAncho;
-
-          coordenadas.style.height = `${coordenadasAlto}px`;
-          coordenadas.style.width = `${coordenadasAncho}px`;
-          coordenadas.style.top = `${coordenadasTop}px`;
-          coordenadas.style.left = `${coordenadasLeft}px`;
-
-          coordenadasBox.appendChild(coordenadas);
-        });
+      result.forEach((face) => {
+        const coordenadas = document.createElement("div");
+        coordenadas.className = "coordenadas";
+        coordenadas.style.height = `${face.faceRectangle.height}px`;
+        coordenadas.style.width = `${face.faceRectangle.width}px`;
+        coordenadas.style.top = `${face.faceRectangle.top}px`;
+        coordenadas.style.left = `${face.faceRectangle.left}px`;
+        coordenadasBox.appendChild(coordenadas);
       });
-
+    });
     fetch(
       `${Url}face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
       {
@@ -145,37 +103,16 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((result) => {
       console.log(result);
 
-      // Obtén la referencia a la imagen
-      const imagen = document.getElementById("imagenObjeto2");
-
-      // Obtén el ancho y el alto de la imagen
-      const imagenAncho = imagen.offsetWidth;
-      const imagenAlto = imagen.offsetHeight;
-
-      // Calcula el factor de escala en función del ancho de la imagen
-      const escalaAncho = (imagenAncho * 0.3) / 100;
-
       result.forEach((face) => {
         const coordenadas = document.createElement("div");
         coordenadas.className = "coordenadas";
-
-        // Calcula las dimensiones de las coordenadas en función del factor de escala
-        const coordenadasAncho = face.faceRectangle.width * escalaAncho;
-        const coordenadasAlto = face.faceRectangle.height * escalaAncho;
-
-        // Calcula las posiciones de las coordenadas en función del factor de escala
-        const coordenadasLeft = face.faceRectangle.left * escalaAncho;
-        const coordenadasTop = face.faceRectangle.top * escalaAncho;
-
-        coordenadas.style.height = `${coordenadasAlto}px`;
-        coordenadas.style.width = `${coordenadasAncho}px`;
-        coordenadas.style.top = `${coordenadasTop}px`;
-        coordenadas.style.left = `${coordenadasLeft}px`;
-
+        coordenadas.style.height = `${(face.faceRectangle.height)*0.3}px`;
+        coordenadas.style.width = `${(face.faceRectangle.width)*0.3}px`;
+        coordenadas.style.top = `${face.faceRectangle.top}px`;
+        coordenadas.style.left = `${face.faceRectangle.left}px`;
         coordenadasBox.appendChild(coordenadas);
       });
     });
-
   }
 });
 
