@@ -30,7 +30,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
     <!-- js file -->
-    <script src="../../src/js/axios.js"></script>
+    <script src="../../src/js/chatBot.js"></script>
 
     <!-- script de bootstrap para manejo de eventos y transiciones -->
     <script
@@ -121,7 +121,7 @@
       <!-- contenedor que contiene todas las imágenes analizadas -->
       <div class="img-box">
 
-        <div class="container-img">
+        <div class="container-img" id="container">
           <input
             class="form-control url  urls-input"
             type="search"
@@ -135,7 +135,7 @@
           <div id="coordenadas" class="coordenadas"></div>
         </div>
 
-        <div class="container-img">
+        <div class="container-img" id="container">
           <input
             class="form-control url urls-input"
             type="search"
@@ -144,12 +144,12 @@
             aria-label="Search"
           />
 
-          <img id="imagenObjeto" />
+          <img id="imagenObjeto1" />
 
           <div id="coordenadas" class="coordenadas"></div>
         </div>
 
-        <div class="container-img">
+        <div class="container-img" id="container">
           <input
             class="form-control url urls-input"
             type="search"
@@ -158,7 +158,7 @@
             aria-label="Search"
           />
 
-          <img id="imagenObjeto"/>
+          <img id="imagenObjeto2"/>
 
           <div id="coordenadas" class="coordenadas"></div>
         </div>

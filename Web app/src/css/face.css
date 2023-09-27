@@ -82,7 +82,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40%;
+    margin-top: 2%;
 }
 
 #result {
@@ -98,10 +98,10 @@ img {
 }
 
 .container-img {
-  height: 100px;
+  height: 30%;
   width: 30%;
   border: 1px solid rgb(167, 194, 219);
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
 }
 
@@ -113,6 +113,7 @@ img {
 .urls-input {
   margin: 10px;
   width: 90% !important;
+  border-radius: 15px !important;
 }
 
 footer {
