@@ -82,7 +82,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 40%;
 }
 
 #result {
@@ -134,4 +134,8 @@ footer .container-footer {
 footer .container-footer i {
   scale: 1.5;
   opacity: 0.5;
+}
+
+.result{
+    color: black ;
 }

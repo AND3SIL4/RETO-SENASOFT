@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const analyzeButton = document.getElementById("analyzeButton");
-    const imageUrlImg = document.getElementById("imageUrl");
+    const imageUrlImg1 = document.getElementById("input-imagen-1");
+    const imageUrlImg2 = document.getElementById("input-imagen-2");
+    const imageUrlImg3 = document.getElementById("input-imagen-3");
     const resultDiv = document.getElementById("result");
     const coordenadasDiv = document.getElementById("coordenadas");
 
@@ -9,16 +11,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function cargarImagen() {
         const imagen = document.getElementById("imagenObjeto");
-        const link = document.getElementById("imageUrl").value;
+        const link = document.getElementById("input-imagen-1").value;
         imagen.src = link;
     }
 
     function analyzeImage() {
-        const Url = "URL";
-        const key = "KEY   ";
-        const imageUrl = imageUrlImg.value;
+        const Url = "https://democlasificacionytraduccion.cognitiveservices.azure.com/";
+        const key = "689e1582511d4a4e87021c582feac9d2";
+        const imageUrl1 = imageUrlImg1.value;
+        const imageUrl2 = imageUrlImg2.value;
+        const imageUrl3 = imageUrlImg3.value;
 
-        if (!imageUrl) {
+
+        if (!imageUrl1 || !imageUrl2 || !imageUrl3) {
             resultDiv.innerHTML = "Por favor ingrese una url...";
         }
 
@@ -26,19 +31,22 @@ document.addEventListener("DOMContentLoaded", function () {
         header.append("Prediction-key", key);
         header.append("Content-Type", 'application/json');
 
-        const body = JSON.stringify({ url: imageUrl });
+        const body1 = JSON.stringify({ url: imageUrl1 });
+        const body2 = JSON.stringify({ url: imageUrl2 });
+        const body3 = JSON.stringify({ url: imageUrl3 });
+
 
         fetch(
-            `${Url}/face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
+            `${Url}face/v1.0/detect?returnfaceRectangle&detectionModel=detection_01`,
             {
                 method: "POST",
                 headers: header,
-                body: body,
+                body: body1,
             }
         )
             .then((response) => response.json())
             .then((result) => {
-                console.log(result[0].faceRectangle);
+                console.log(result);
 
                 coordenadasDiv.style.height = `${result[0].faceRectangle.height}px`;
                 coordenadasDiv.style.width = `${result[0].faceRectangle.width}px`;

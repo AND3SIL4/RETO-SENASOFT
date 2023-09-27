@@ -11,7 +11,7 @@
     <link rel="icon" href="src/assets/img/logo.png" type="image/x-icon" />
 
     <!-- Link hacia hoja de estilos local -->
-    <link rel="stylesheet" href="src/css/face.css" />
+    <link rel="stylesheet" href="../css/face.css" />
 
     <!-- CDN de axios para realizar peticiones http y https -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -30,7 +30,7 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     />
     <!-- js file -->
-    <script src="./src/js/axios.js"></script>
+    <script src="../../src/js/axios.js"></script>
 
     <!-- script de bootstrap para manejo de eventos y transiciones -->
     <script
@@ -45,14 +45,14 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary primernavbar">
       <div class="nav">
         <img
-          src="src/assets/img/logo.png"
+          src="../../src/assets/img/logo.png"
           class="logo-navbar"
           alt="logo pagina web"
-        />
+        />  
         <div class="title">Detección de Rostros</div>
 
         <div class="other">
-          <a href="index.html">inicio</a>
+          <a href="../../index.html">inicio</a>
           <a href="detection">Detección</a>
         </div>
 
@@ -167,7 +167,8 @@
 
       <div class="button-div">
         <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg"
-                    id="analizeButton">Analizar imágenes<i class="bi bi-eye-fill"></i></button>
+                    id="analyzeButton">Analizar imágenes<i class="bi bi-eye-fill"></i></button>
+        <div class="result" id="result"></div>
       </div>
 
     </div>
@@ -180,6 +181,6 @@
     </footer>
 
     <!-- script de archivo javascript local encargado de realizar las peticiones y renderizar el contenido -->
-    <script src="./src/js/face.js"></script>
+    <script src="../../src/js/face.js"></script>
   </body>
 </html>
