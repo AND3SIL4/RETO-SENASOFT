@@ -140,3 +140,16 @@ footer .container-footer i {
 .result{
     color: black ;
 }
+
+.navegacion {
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 10opx;
+  color: white !important;
+  padding: 10px;
+  background-color: #0B5ED7;
+}
+
+.navegacion:hover {
+  background-color: gray;
+}
