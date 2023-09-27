@@ -47,7 +47,6 @@ footer .container-footer i {
 }
 
 .imagebody {
-    opacity: 0.9;
     width: 95%;
     height: 100vh;
     background-image: url(../assets/img/gato.jpg);
@@ -56,6 +55,10 @@ footer .container-footer i {
     background-position: center;
     z-index: -1;
     border-radius: 30px;
+}
+.imagebody:hover{
+    cursor: pointer !important;
+    opacity: 1;
 }
 
 .img-box {
@@ -89,9 +92,17 @@ footer .container-footer i {
 }
 
 .desplegable {
+    border: 1px solid rgb(206, 202, 202) !important;
     background-color: white !important;
     color: black;
 }
+
+.dropdown ul li:hover{
+    cursor: pointer !important;
+    background-color: #0b5ed7; /*cambiar color*/
+    color: white;
+}
+
 .texto{
     margin-top: 3rem;
     text-shadow: 
@@ -101,4 +112,27 @@ footer .container-footer i {
        1px  1px 0 #000; 
     font-size: 6rem;
     color: white;
+}
+.floating-btn{
+    scale: 1.5;
+    cursor: pointer;
+    border-radius: 100px;
+}
+
+.img-box:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+.img-box{
+    opacity: 0.9;
+    transition: all 300ms;
+}
+.btn-clasificar:hover{
+    scale: 1.1;
+    transition: all 300ms;
+}
+
+.cargar-archivo:hover{
+    scale: 1.1;
+    transition: all 300ms;
 }
