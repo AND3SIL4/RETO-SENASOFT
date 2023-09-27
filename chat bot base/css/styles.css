@@ -1,0 +1,39 @@
+/* Puedes personalizar estos estilos según tus preferencias */
+body {
+  background-color: #f8f9fa;
+}
+
+.card {
+  margin-top: 50px;
+}
+
+#chat-container {
+  height: 33rem;
+  overflow-y: scroll;
+}
+
+.card-footer {
+  height: 65px;
+  background-color: #f8f9fa;
+}
+.user-message, .bot-message{
+  margin-top: 10px;
+  border-radius: 20px;
+  padding: 10px 20px;
+
+  border: 1px solid #ccc; /* Borde de 1 píxel y color gris claro */
+  background-color: #f9f9f9; /* Fondo gris claro */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+  margin-bottom: 10px; 
+}
+.bot-message{
+  margin-right: 45%;
+  color: white;
+  background-color: blue;
+}
+
+.user-message{
+  margin-left: 45%;
+  text-align: end;
+  border: 1px solid rgb(178, 187, 196);
+}
