@@ -1,6 +1,6 @@
 // Claves para el servicio de predicción
 const PREDICTION_URL =
-  "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/9e9619cc-7f2b-4bca-9392-be426e317aae/classify/iterations/Modelo%20de%20clasificaci%C3%B3n/url";
+  "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/url";
 const PREDICTION_KEY = "689e1582511d4a4e87021c582feac9d2";
 const TRASLATOR_URL = "https://api.cognitive.microsofttranslator.com/";
 const LOCATION = "eastus";
@@ -106,19 +106,18 @@ function seleccionarIdioma(elemento) {
 
     // Actualiza el texto del botón con el valor seleccionado
     languageValue = valorSeleccionado;
-    botonSelectLanguge.innerHTML = `${
-      languageValue == "es"
-        ? "Español"
-        : languageValue === "en"
+    botonSelectLanguge.innerHTML = `${languageValue == "es"
+      ? "Español"
+      : languageValue === "en"
         ? "Inglés"
         : languageValue === "fr"
-        ? "Francés"
-        : languageValue === "pt"
-        ? "Portugués"
-        : languageValue === "de"
-        ? "Aleman"
-        : "No encontrado"
-    }`;
+          ? "Francés"
+          : languageValue === "pt"
+            ? "Portugués"
+            : languageValue === "de"
+              ? "Aleman"
+              : "No encontrado"
+      }`;
 
     // Resuelve la promesa con el valor del idioma seleccionado
     resolve(languageValue);
@@ -177,21 +176,21 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
         ${traduccion}</voice></speak>`;
 
         const headers = {
-            "Ocp-Apim-Subscription-Key" : PREDICTION_KEY,
-            "Content-Type" : "application/ssml+xml",
-            "X-Microsoft-OutputFormat" : "audio-16khz-128kbitrate-mono-mp3"
-          };
+          "Ocp-Apim-Subscription-Key": PREDICTION_KEY,
+          "Content-Type": "application/ssml+xml",
+          "X-Microsoft-OutputFormat": "audio-16khz-128kbitrate-mono-mp3"
+        };
 
         const outputFile = "salida.wav";
 
         fetch(
-            `https://${LOCATION}.tts.speech.microsoft.com/cognitiveservices/v1`,
-            {
-                method : "POST",
-                headers : headers,
-                body: audio,
-                Outfile: outputFile
-            }
+          `https://${LOCATION}.tts.speech.microsoft.com/cognitiveservices/v1`,
+          {
+            method: "POST",
+            headers: headers,
+            body: audio,
+            Outfile: outputFile
+          }
         )
       }
       // console.log(JSON.stringify(response.data, null, 4));
@@ -216,3 +215,46 @@ btn.addEventListener("click", async () => {
     console.error(error);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+const archivo = document.getElementById('input-file');
+const bton = document.getElementById('enviar-btn');
+
+// Agrega un evento 'click' al botón
+bton.addEventListener('click', (event) => {
+  event.preventDefault(); // Previene la acción por defecto del botón
+
+  // Crea un nuevo objeto FormData y agrega el archivo
+  let formData = new FormData();
+  formData.append('archivo', archivo.files[0]);
+
+  const headers = {
+    "Prediction-Key": "689e1582511d4a4e87021c582feac9d2",
+    "Content-Type": "application/octet-stream",
+  };
+
+  // Haz una petición axios para enviar los datos del formulario a la API
+  axios.post('https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/image', formData, { headers })
+    .then(function (response) {
+      // Maneja la respuesta de la API
+      console.log(response.data);
+    })
+    .catch(function (error) {
+      // Maneja cualquier error que ocurra
+      console.error(error);
+    });
+});
+
+
+
+
