@@ -168,13 +168,9 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
     responseType: "json",
   })
     .then(function (response) {
-      let traduccion = response.data[0].translations[0].text;
+      const traduccion = response.data[0].translations[0].text;
       descriptionDiv.innerHTML = traduccion;
 
-      if (!traduccion) {
-        const audio = `<speak version='1.0' xml:lang='en-US'>
-        <voice xml:lang='en-US' xml:gender='Female' name='en-US-AriaNeural'>
-        ${traduccion}</voice></speak>`;
 
         const headers = {
             "Ocp-Apim-Subscription-Key" : PREDICTION_KEY,
@@ -182,18 +178,22 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
             "X-Microsoft-OutputFormat" : "audio-16khz-128kbitrate-mono-mp3"
           };
 
-        const outputFile = "salida.wav";
-
         fetch(
             `https://${LOCATION}.tts.speech.microsoft.com/cognitiveservices/v1`,
             {
                 method : "POST",
                 headers : headers,
-                body: audio,
-                Outfile: outputFile
+                body:`<speak version="1.0" xml:lang="es-ES"><voice xml:lang="es-ES" xml:gender="Female" name="es-ES-LauraNeural">${traduccion}</voice></speak>`
             }
         )
-      }
+        .then(response => response.blob())
+        .then(blob => {
+          const audioUrl = URL.createObjectURL(blob);
+          const audioElement = new Audio(audioUrl);
+          audioElement.play();
+        });
+        
+        
       // console.log(JSON.stringify(response.data, null, 4));
     })
     .catch((err) => {

@@ -75,33 +75,28 @@ button {
 img {
   height: auto;
   width: 100%;
+  position: relative  ;
 }
 
-.button-div{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2%;
+.button-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
 }
-
-#result {
-  color: white;
-  font-size: 20px;
-  border-bottom: 1px solid aqua;
-}
-
 .img-box {
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
 .container-img {
-  height: auto;
-  width: 30%;
+  width: auto;
   border: 1px solid rgb(167, 194, 219);
   border-radius: 20px;
   margin: 20px;
+
 }
 
 .btn-clasificar {
@@ -136,13 +131,21 @@ footer .container-footer i {
   opacity: 0.5;
 }
 
-.result{
-    color: black ;
+.result {
+  color: black; 
+  font-size: 20px;
+  border-bottom: 1px solid aqua;
 }
 
-.description{
-    align-items: center;
-    display: flex;
-    justify-content: center ;
-    color: gray;
+.description {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: gray;
+}
+
+.coordenadas {
+  position: absolute;
+  border: 3px solid rgba(255, 0, 0, 0.445);
+  z-index: 2;
 }
