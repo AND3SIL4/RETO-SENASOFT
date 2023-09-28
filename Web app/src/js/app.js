@@ -13,6 +13,9 @@ const listaIdiomas = document.querySelectorAll(".dropdown-menu li");
 const loadFile = document.getElementById("load-file");
 const botonSelectLanguge = document.getElementById("selecLanguage");
 
+
+const archivo = document.getElementById('input-file');
+
 // Declarar las variables globales
 let respuesta;
 let languageValue = "es";
@@ -32,6 +35,10 @@ inputImagen.addEventListener("input", () => {
 // Función para consumir la API utilizando un archivo local
 function consumeAPIwithLocalFile(file) {
   return new Promise((resolve, reject) => {
+    // Crea un nuevo objeto FormData y agrega el archivo
+    let formData = new FormData();
+    formData.append('archivo', file.files[0]);
+
     const headers = {
       "Prediction-Key": PREDICTION_KEY,
       "Content-Type": "application/octet-stream",
@@ -39,20 +46,27 @@ function consumeAPIwithLocalFile(file) {
 
     descriptionDiv.innerHTML = "Analizando imagen...";
 
-    axios
-      .post(PREDICTION_URL, file, { headers })
-      .then((response) => {
+    // Haz una petición axios para enviar los datos del formulario a la API
+    axios.post('https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/image', formData, { headers })
+      .then(function (response) {
+        // Maneja la respuesta de la API
         const result = response.data;
         const items = result.predictions;
         respuesta = `La imagen corresponde a ${items[0].tagName}`;
+        descriptionDiv.innerHTML = respuesta;
         resolve(); // Resolvemos la promesa una vez que tengamos la respuesta
       })
-      .catch((error) => {
+      .catch(function (error) {
+        // Maneja cualquier error que ocurra
         console.error(error);
+        descriptionDiv.innerHTML =
+          "Error al analizar la imagen por favor intente de nuevo";
+        alert(`Un error ha ocurrido por favor intente de nuevo`);
         reject(error); // Rechazamos la promesa en caso de error
       });
   });
 }
+
 
 // evento que renderiza la carga de imágenes locales
 loadFile.addEventListener("change", function () {
@@ -61,7 +75,6 @@ loadFile.addEventListener("change", function () {
     const reader = new FileReader();
     reader.onload = function (e) {
       const imageDataLocal = e.target.result;
-      console.log(imageDataLocal);
       imagenContenedor.style.backgroundImage = `url(${imageDataLocal})`;
     };
     reader.readAsDataURL(file);
@@ -140,7 +153,7 @@ listaIdiomas.forEach(function (elemento) {
 });
 
 // funcion para obtener la traduccion del contenido
-function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
+async function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
   axios({
     baseURL: TRASLATOR_URL,
     // usar 'detect', para solo detectar el idioma
@@ -202,16 +215,24 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
 
 // Llamado a la función que hace la solicitud a las llaves del modelo de clasificación
 btn.addEventListener("click", async () => {
-  // logica para imagenes ingresadas desde url
-  const file = loadFile.files[0]; // para cargar archivos locales
 
   try {
-    // Llamar a las funciones utilizando async/await
-    await consumeAPIWithUrl(inputImagen.value); // funcion para hacer llamado con entrada de url
-
-    // Llamar a la funcion para hacer la traduccion del contenido dado por el modelo de clasificacion
-    hacerTraduccion(respuesta, languageValue);
+    if (loadFile.files.length === 0 && inputImagen.value === '') {
+      alert('No ha seleccionado ninguna imagen...')
+    }
+    if (inputImagen.value === '') {
+      await consumeAPIwithLocalFile(loadFile);
+      await hacerTraduccion(respuesta, languageValue);
+      console.log('carga de archivos desde directorio local');
+      loadFile.value = '';
+    } else {
+      await consumeAPIWithUrl(inputImagen.value);
+      await hacerTraduccion(respuesta, languageValue);
+      console.log('carga de archivo desde url');
+      inputImagen.value = '';
+    }
   } catch (error) {
+    alert('Error al cargar los archivos, por favor seleccione solo uno...')
     console.error(error);
   }
 });
@@ -223,37 +244,6 @@ btn.addEventListener("click", async () => {
 
 
 
-
-
-
-
-const archivo = document.getElementById('input-file');
-const bton = document.getElementById('enviar-btn');
-
-// Agrega un evento 'click' al botón
-bton.addEventListener('click', (event) => {
-  event.preventDefault(); // Previene la acción por defecto del botón
-
-  // Crea un nuevo objeto FormData y agrega el archivo
-  let formData = new FormData();
-  formData.append('archivo', archivo.files[0]);
-
-  const headers = {
-    "Prediction-Key": "689e1582511d4a4e87021c582feac9d2",
-    "Content-Type": "application/octet-stream",
-  };
-
-  // Haz una petición axios para enviar los datos del formulario a la API
-  axios.post('https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/image', formData, { headers })
-    .then(function (response) {
-      // Maneja la respuesta de la API
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      // Maneja cualquier error que ocurra
-      console.error(error);
-    });
-});
 
 
 

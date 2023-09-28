@@ -85,10 +85,17 @@
         <!-- contenido del body -->
         <div class="menubody">
             <div class="menunavbarbody">
+
+                <!-- cargar archivo con url -->
                 <input class="form-control url" type="search" id="input-imagen"
                     placeholder="Ingresa la url de la imagen a buscar" aria-label="Search">
-                <label class="btn btn-secondary col-2 cargar-archivo d-flex gap-2"><input id="load-file" type="file"
-                        style="display: none;"><i class="bi bi-arrow-up-circle"></i>Cargar imagen</label>
+
+                <!-- cargar archivo local-->
+                <div>
+                    <input class="btn btn-secondary" type="file" name="arhcivo" id="load-file">
+                </div>
+
+                <!-- seleccionar idioma -->
                 <div class="div-dropdown">
                     <button id="selecLanguage" type="button" class="btn btn-primary dropdown-toggle"
                         data-bs-toggle="dropdown" aria-expanded="false">
@@ -103,16 +110,7 @@
                     </ul>
                 </div>
 
-                <!-- prueba de cargar archivo -->
-                <div>
-                    <form action="">
-                        <input class="btn btn-primary" type="file" name="arhcivo" id="input-file">
-                    </form>
-                </div>
-                <button id="enviar-btn" class="btn btn-secondary" type="submit">Enviar</button>
-
-
-
+                <!-- hacer llamado -->
                 <button class="btn btn-primary btn-clasificar d-flex gap-2 btn-lg"
                     id="button-classification">Clasificar<i class="bi bi-eye-fill"></i></button>
             </div>
