@@ -69,25 +69,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const item = result.length;
         console.log(item);
         console.log(result);
-        descriptionDiv1.innerHTML = `en total hay ${item} caras`;
 
-        // for (let i = 0; i < item; i++) {
-        //   const divCoordenadas = document.createElement("div");
-        //   const altoImg = imagen1.height;
+        const texto = `<p>en total hay ${item} caras <br> Cuadro Delimitador: </p>`
+        descriptionDiv1.innerHTML = texto;
 
-        //   console.log(altoImg);
-        //   divCoordenadas.className = "coordenadas";
-        //   divCoordenadas.id = "coordenadas";
+        for (let i = 0; i < item; i++) {
+          const divCoordenadas = document.createElement("div");
 
-        //   divCoordenadas.style.height = `${result[i].faceRectangle.height}px`;
-        //   divCoordenadas.style.width = `${result[i].faceRectangle.width}px`;
-        //   divCoordenadas.style.top = `${
-        //     result[i].faceRectangle.top - altoImg
-        //   }px`;
-        //   divCoordenadas.style.left = `${result[i].faceRectangle.left}px`;
+          const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
 
-        //   detection1.appendChild(divCoordenadas);
-        // }
+          divCoordenadas.innerHTML = delimiter;
+
+          descriptionDiv1.appendChild(divCoordenadas);
+        }
       });
 
       fetch(
