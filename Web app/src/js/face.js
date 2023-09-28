@@ -65,15 +65,13 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(item);
         console.log(result);
 
-        const texto = `<p>en total hay ${item} caras <br> Cuadro Delimitador: </p>`
+        const texto = `<p>Número total de caras detectadas: ${item}`
         descriptionDiv1.innerHTML = texto;
 
         for (let i = 0; i < item; i++) {
           const divCoordenadas = document.createElement("div");
 
           divCoordenadas.className = "description-face-rectangle";
-
-          const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
 
           divCoordenadas.innerHTML = delimiter;
 
@@ -94,13 +92,11 @@ document.addEventListener("DOMContentLoaded", function () {
           const item = result.length;
           console.log(item);
           console.log(result);
-          descriptionDiv2.innerHTML = `En total hay ${item} caras`;
+          descriptionDiv2.innerHTML = `<p>Número total de caras detectadas: ${item}`;
           for (let i = 0; i < item; i++) {
             const divCoordenadas = document.createElement("div");
   
             divCoordenadas.className = "description-face-rectangle";
-  
-            const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
   
             divCoordenadas.innerHTML = delimiter;
   
@@ -121,13 +117,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const item = result.length;
         console.log(item);
         console.log(result);
-        descriptionDiv3.innerHTML = `en total hay ${item} caras`;
+        descriptionDiv3.innerHTML = `<p>Número total de caras detectadas: ${item}`;
         for (let i = 0; i < item; i++) {
           const divCoordenadas = document.createElement("div");
 
           divCoordenadas.className = "description-face-rectangle";
-
-          const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
 
           divCoordenadas.innerHTML = delimiter;
 
