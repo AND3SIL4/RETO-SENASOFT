@@ -142,6 +142,7 @@ footer .container-footer i {
     display: flex;
     justify-content: center ;
     color: gray;
+    flex-direction: column;
 }
 .navegacion {
   border-radius: 5px;
@@ -154,4 +155,8 @@ footer .container-footer i {
 
 .navegacion:hover {
   background-color: gray;
+}
+
+.description-face-rectangle{
+
 }

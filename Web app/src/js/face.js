@@ -2,12 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const analyzeButton = document.getElementById("analyzeButton");
   const imageUrlImg1 = document.getElementById("input-imagen-1");
   const imageUrlImg2 = document.getElementById("input-imagen-2");
-  const imageUrlImg3 = document.getElementById("input-imagen-3");
-
-  const detection1 = document.getElementById("container1");
-  const detection2 = document.getElementById("container2");
-  const detection3 = document.getElementById("container3");
-
+  const imageUrlImg3 = document.getElementById("input-imagen-3"); 
   const resultDiv = document.getElementById("result");
   const descriptionDiv1 = document.getElementById("description1");
   const descriptionDiv2 = document.getElementById("description2");
@@ -45,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageUrl3 = imageUrlImg3.value;
 
     if (!imageUrl1 || !imageUrl2 || !imageUrl3) {
-      resultDiv.innerHTML = "Por favor ingrese todas las url...";
+      alert("Por favor ingrese todas las url...");
     }
 
     const header = new Headers();
@@ -76,6 +71,8 @@ document.addEventListener("DOMContentLoaded", function () {
         for (let i = 0; i < item; i++) {
           const divCoordenadas = document.createElement("div");
 
+          divCoordenadas.className = "description-face-rectangle";
+
           const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
 
           divCoordenadas.innerHTML = delimiter;
@@ -89,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           method: "POST",
           headers: header,
-          body: body1,
+          body: body2,
         }
       )
         .then((response) => response.json())
@@ -97,7 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
           const item = result.length;
           console.log(item);
           console.log(result);
-          descriptionDiv2.innerHTML = `en total hay ${item} caras`;
+          descriptionDiv2.innerHTML = `En total hay ${item} caras`;
+          for (let i = 0; i < item; i++) {
+            const divCoordenadas = document.createElement("div");
+  
+            divCoordenadas.className = "description-face-rectangle";
+  
+            const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
+  
+            divCoordenadas.innerHTML = delimiter;
+  
+            descriptionDiv2.appendChild(divCoordenadas);
+          }
         });
 
     fetch(
@@ -114,6 +122,17 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(item);
         console.log(result);
         descriptionDiv3.innerHTML = `en total hay ${item} caras`;
+        for (let i = 0; i < item; i++) {
+          const divCoordenadas = document.createElement("div");
+
+          divCoordenadas.className = "description-face-rectangle";
+
+          const delimiter = `<p>Alto ${result[i].faceRectangle.top}px <br> derecha ${result[i].faceRectangle.left}px <br> Alto ${result[i].faceRectangle.height}px <br> Ancho ${result[i].faceRectangle.width}px </p>`;
+
+          divCoordenadas.innerHTML = delimiter;
+
+          descriptionDiv3.appendChild(divCoordenadas);
+        }
       });
   }
 });
