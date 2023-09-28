@@ -64,7 +64,7 @@ function consume(imagen) {
 
       
       // Dibujar las coordenadas de detección en el canvas
-      items.forEach((element) => {
+      result.forEach((element) => {
         if (element.probability > 0.9) {
           const nombre = element.tagName;
           const probabilidad = element.probability;
