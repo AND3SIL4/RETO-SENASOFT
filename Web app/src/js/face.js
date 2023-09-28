@@ -69,93 +69,42 @@ document.addEventListener("DOMContentLoaded", function () {
         const item = result.length;
         console.log(item);
         console.log(result);
-        descriptionDiv3.innerHTML = `en total hay ${item} caras`;
+        descriptionDiv1.innerHTML = `en total hay ${item} caras`;
 
-        for (let i = 0; i < item; i++) {
-          const divCoordenadas = document.createElement("div");
-          const altoImg = imagen1.height;
+        // for (let i = 0; i < item; i++) {
+        //   const divCoordenadas = document.createElement("div");
+        //   const altoImg = imagen1.height;
 
-          console.log(altoImg);
-          divCoordenadas.className = "coordenadas";
-          divCoordenadas.id = "coordenadas";
+        //   console.log(altoImg);
+        //   divCoordenadas.className = "coordenadas";
+        //   divCoordenadas.id = "coordenadas";
 
-          divCoordenadas.style.height = `${result[i].faceRectangle.height}px`;
-          divCoordenadas.style.width = `${result[i].faceRectangle.width}px`;
-          divCoordenadas.style.top = `${
-            result[i].faceRectangle.top - altoImg
-          }px`;
-          divCoordenadas.style.left = `${result[i].faceRectangle.left}px`;
+        //   divCoordenadas.style.height = `${result[i].faceRectangle.height}px`;
+        //   divCoordenadas.style.width = `${result[i].faceRectangle.width}px`;
+        //   divCoordenadas.style.top = `${
+        //     result[i].faceRectangle.top - altoImg
+        //   }px`;
+        //   divCoordenadas.style.left = `${result[i].faceRectangle.left}px`;
 
-          detection1.appendChild(divCoordenadas);
-        }
+        //   detection1.appendChild(divCoordenadas);
+        // }
       });
 
-    axios.post(Url, body2, { header }).then((response) => {
-      const items = response.predictions;
-
-      // Crear un canvas para mostrar las coordenadas de detección
-      const canvas = document.createElement("canvas");
-      canvas.width = newImg.width;
-      canvas.height = newImg.height;
-      const context = canvas.getContext("2d");
-      context.drawImage(newImg, 0, 0);
-
-      // Dibujar las coordenadas de detección en el canvas
-      items.forEach((element) => {
-        if (element.probability > 0.9) {
-          const porcentaje = probabilidad * 100;
-
-          // Las coordenadas de detección generalmente se encuentran en element.boundingBox
-          const boundingBox = element.boundingBox;
-
-          const originalImgWidth = newImg.naturalWidth;
-          const originalImgHeight = newImg.naturalHeight;
-
-          context.rect(
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight,
-            boundingBox.width * originalImgWidth,
-            boundingBox.height * originalImgHeight
-          );
-          context.lineWidth = 2;
-          context.strokeStyle = "red";
-          context.fillStyle = "red";
-          context.stroke();
-
-          context.fillStyle = "red"; // Color y opacidad del fondo
-          context.fillRect(
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight - 20, // Ajustar la posición vertical del fondo
-            context.measureText(nombre).width + 65, // Ancho del fondo (basado en el texto)
-            20 // Altura del fondo
-          );
-
-          // Agregar etiqueta al cuadro de detección
-          context.font = "16px Arial";
-          context.fillStyle = "white";
-          context.fillText(
-            nombre,
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight + -5
-          );
-
-          // Agregar otro comentario aquí
-          // Puedes personalizar el estilo del texto y su posición
-          context.font = "16px Arial";
-          context.fillStyle = "white";
-          context.fillText(
-            porcentaje.toFixed(0) + "%",
-            boundingBox.left * originalImgWidth + 52,
-            boundingBox.top * originalImgHeight - 5
-          );
-          console.log("Prediccion realizada con exito...");
+      fetch(
+        `${Url}face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
+        {
+          method: "POST",
+          headers: header,
+          body: body1,
         }
-      });
-
-      // Limpiar el contenido anterior y agregar la nueva imagen con las coordenadas de detección
-      imagenContainer.innerHTML = "";
-      imagenContainer.appendChild(canvas);
-    });
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          const item = result.length;
+          console.log(item);
+          console.log(result);
+          descriptionDiv2.innerHTML = `en total hay ${item} caras`;
+        });
 
     fetch(
       `${Url}face/v1.0/detect?returnfaceRecangle&detectionModel=detection_01`,
@@ -171,22 +120,6 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log(item);
         console.log(result);
         descriptionDiv3.innerHTML = `en total hay ${item} caras`;
-
-        for(let i = 0; i < item; i++) {
-          const divCoordenadas = document.createElement("div");
-          const altoImg = imagen3.height;
-
-          console.log(altoImg);
-          divCoordenadas.className = "coordenadas";
-          divCoordenadas.id = "coordenadas";
-
-          divCoordenadas.style.height = `${result[i].faceRectangle.height}px`;
-          divCoordenadas.style.width = `${result[i].faceRectangle.width}px`;
-          divCoordenadas.style.top = `${result[i].faceRectangle.top - altoImg}px`;
-          divCoordenadas.style.left = `${result[i].faceRectangle.left}px`;
-
-          detection3.appendChild(divCoordenadas);
-        }
       });
   }
 });

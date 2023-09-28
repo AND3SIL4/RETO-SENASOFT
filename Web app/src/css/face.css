@@ -86,13 +86,13 @@ img {
 }
 .img-box {
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
 .container-img {
-  width: auto;
+  width: 30%;
+  height: auto;
   border: 1px solid rgb(167, 194, 219);
   border-radius: 20px;
   margin: 20px;
