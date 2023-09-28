@@ -1,6 +1,6 @@
 // Claves para el servicio de predicción
 const PREDICTION_URL =
-  "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/9e9619cc-7f2b-4bca-9392-be426e317aae/classify/iterations/Modelo%20de%20clasificaci%C3%B3n/url";
+  "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/url";
 const PREDICTION_KEY = "689e1582511d4a4e87021c582feac9d2";
 const TRASLATOR_URL = "https://api.cognitive.microsofttranslator.com/";
 const LOCATION = "eastus";
@@ -12,6 +12,8 @@ const descriptionDiv = document.getElementById("description-image");
 const listaIdiomas = document.querySelectorAll(".dropdown-menu li");
 const loadFile = document.getElementById("load-file");
 const botonSelectLanguge = document.getElementById("selecLanguage");
+
+const archivo = document.getElementById("input-file");
 
 // Declarar las variables globales
 let respuesta;
@@ -32,6 +34,10 @@ inputImagen.addEventListener("input", () => {
 // Función para consumir la API utilizando un archivo local
 function consumeAPIwithLocalFile(file) {
   return new Promise((resolve, reject) => {
+    // Crea un nuevo objeto FormData y agrega el archivo
+    let formData = new FormData();
+    formData.append("archivo", file.files[0]);
+
     const headers = {
       "Prediction-Key": PREDICTION_KEY,
       "Content-Type": "application/octet-stream",
@@ -39,16 +45,27 @@ function consumeAPIwithLocalFile(file) {
 
     descriptionDiv.innerHTML = "Analizando imagen...";
 
+    // Haz una petición axios para enviar los datos del formulario a la API
     axios
-      .post(PREDICTION_URL, file, { headers })
-      .then((response) => {
+      .post(
+        "https://democlasificacionytraduccion.cognitiveservices.azure.com/customvision/v3.0/Prediction/bab26199-b40b-44f9-bb64-44c9bd4d3daa/classify/iterations/proyectoClasificacionV2/image",
+        formData,
+        { headers }
+      )
+      .then(function (response) {
+        // Maneja la respuesta de la API
         const result = response.data;
         const items = result.predictions;
         respuesta = `La imagen corresponde a ${items[0].tagName}`;
+        descriptionDiv.innerHTML = respuesta;
         resolve(); // Resolvemos la promesa una vez que tengamos la respuesta
       })
-      .catch((error) => {
+      .catch(function (error) {
+        // Maneja cualquier error que ocurra
         console.error(error);
+        descriptionDiv.innerHTML =
+          "Error al analizar la imagen por favor intente de nuevo";
+        alert(`Un error ha ocurrido por favor intente de nuevo`);
         reject(error); // Rechazamos la promesa en caso de error
       });
   });
@@ -61,7 +78,6 @@ loadFile.addEventListener("change", function () {
     const reader = new FileReader();
     reader.onload = function (e) {
       const imageDataLocal = e.target.result;
-      console.log(imageDataLocal);
       imagenContenedor.style.backgroundImage = `url(${imageDataLocal})`;
     };
     reader.readAsDataURL(file);
@@ -141,7 +157,7 @@ listaIdiomas.forEach(function (elemento) {
 });
 
 // funcion para obtener la traduccion del contenido
-function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
+async function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
   axios({
     baseURL: TRASLATOR_URL,
     // usar 'detect', para solo detectar el idioma
@@ -171,29 +187,31 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
       const traduccion = response.data[0].translations[0].text;
       descriptionDiv.innerHTML = traduccion;
 
+      const key_Speech = "41ec7dc0100d4a8bbb87adbf3e2cad0d";
+      const location_Speech = "eastus";
 
-        const headers = {
-            "Ocp-Apim-Subscription-Key" : PREDICTION_KEY,
-            "Content-Type" : "application/ssml+xml",
-            "X-Microsoft-OutputFormat" : "audio-16khz-128kbitrate-mono-mp3"
-          };
-
-        fetch(
-            `https://${LOCATION}.tts.speech.microsoft.com/cognitiveservices/v1`,
-            {
-                method : "POST",
-                headers : headers,
-                body:`<speak version="1.0" xml:lang="es-ES"><voice xml:lang="es-ES" xml:gender="Female" name="es-ES-LauraNeural">${traduccion}</voice></speak>`
-            }
+      const headers = new Headers();
+      headers.append("Ocp-Apim-Subscription-Key", PREDICTION_URL);
+      headers.append( "Content-Type","application/ssml+xml" );
+      axios
+        .post(
+          `https://${LOCATION}.tts.speech.microsoft.com/cognitiveservices/v1`,
+          {
+            headers: headers,
+            body: `<speak version="1.0" xml:lang="es-CO"><voice xml:lang="es-CO" xml:gender="Female" name="es-CO-SalomeNeural">${traduccion}</voice></speak>`,
+          }
         )
-        .then(response => response.blob())
-        .then(blob => {
-          const audioUrl = URL.createObjectURL(blob);
-          const audioElement = new Audio(audioUrl);
+        .then((response) => {
+          const blob = new Blob([response.data], { type: "audio/mpeg" });
+          if (blob instanceof Blob) {
+            console.log("Sí es un Blob");
+          } else {
+            console.log("No es un Blob");
+          }
+          const audioElement = new Audio(blob);
           audioElement.play();
         });
-        
-        
+
       // console.log(JSON.stringify(response.data, null, 4));
     })
     .catch((err) => {
@@ -203,16 +221,23 @@ function hacerTraduccion(textoATraducir, idiomaSeleccionado) {
 
 // Llamado a la función que hace la solicitud a las llaves del modelo de clasificación
 btn.addEventListener("click", async () => {
-  // logica para imagenes ingresadas desde url
-  const file = loadFile.files[0]; // para cargar archivos locales
-
   try {
-    // Llamar a las funciones utilizando async/await
-    await consumeAPIWithUrl(inputImagen.value); // funcion para hacer llamado con entrada de url
-
-    // Llamar a la funcion para hacer la traduccion del contenido dado por el modelo de clasificacion
-    hacerTraduccion(respuesta, languageValue);
+    if (loadFile.files.length === 0 && inputImagen.value === "") {
+      alert("No ha seleccionado ninguna imagen...");
+    }
+    if (inputImagen.value === "") {
+      await consumeAPIwithLocalFile(loadFile);
+      await hacerTraduccion(respuesta, languageValue);
+      console.log("carga de archivos desde directorio local");
+      loadFile.value = "";
+    } else {
+      await consumeAPIWithUrl(inputImagen.value);
+      await hacerTraduccion(respuesta, languageValue);
+      console.log("carga de archivo desde url");
+      inputImagen.value = "";
+    }
   } catch (error) {
+    alert("Error al cargar los archivos, por favor seleccione solo uno...");
     console.error(error);
   }
 });

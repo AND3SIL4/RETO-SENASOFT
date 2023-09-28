@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>object detection | Azure</title>
+
+    <!-- Enlaces a las hojas de estilo de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/545/545833.png" />
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Object detection | Azure</h1>
+        <div class="row">
+            <div class="mt-4">
+                <div class="form-group">
+                    <label for="urlImagen">Ingrese la URL de la imagen:</label>
+                    <div class="imagen d-flex gap-2 mt-3">
+                        <input type="text" class="form-control" id="urlImagen"
+                            placeholder="Ejemplo: https://www.ejemplo.com/imagen.jpg" />
+                        <button class="btn btn-primary" id="boton">Consultar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <div id="imagenContainer" class="mt-3">
+                    <!-- Aquí se mostrará la imagen -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agrega los enlaces a los scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <!-- local js -->
+    <script type="module" src="pruebaFeace.js"></script>
+    <!-- <script type="module" src="js/renderImage.js"></script> -->
+</body>
+
+</html>
