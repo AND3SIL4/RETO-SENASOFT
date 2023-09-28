@@ -137,15 +137,21 @@ footer .container-footer i {
   border-bottom: 1px solid aqua;
 }
 
-.description {
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  color: gray;
+.description{
+    align-items: center;
+    display: flex;
+    justify-content: center ;
+    color: gray;
+}
+.navegacion {
+  border-radius: 5px;
+  border: 1px solid white;
+  width: 10opx;
+  color: white !important;
+  padding: 10px;
+  background-color: #0B5ED7;
 }
 
-.coordenadas {
-  position: absolute;
-  border: 3px solid rgba(255, 0, 0, 0.445);
-  z-index: 2;
+.navegacion:hover {
+  background-color: gray;
 }
