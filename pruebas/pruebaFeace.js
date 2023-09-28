@@ -3,8 +3,8 @@
 
 // Claves para el servicio de predicción
 const PREDICTION_URL =
-  "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/dc3daaf6-f99f-4906-aed7-43a2420af919/detect/iterations/object%20detection%20fruits%20images/url";
-const PREDICTION_KEY = "53dcbc30980e40af9ac29b60dd534d2d";
+  "https://facesenasofta.cognitiveservices.azure.com/face/v1.0/detect?detectionModel=detection_01";
+const PREDICTION_KEY = "938b8c0614cc4a0c97db14e29dd3cc00";
 
 const img = document.getElementById("urlImagen");
 const btn = document.getElementById("boton");
@@ -29,7 +29,7 @@ img.addEventListener("input", () => {
 // Función para consumir la API
 function consume(imagen) {
   const headers = {
-    "Prediction-Key": PREDICTION_KEY,
+    "Ocp-Apim-Subscription-Key": PREDICTION_KEY,
     "Content-Type": "application/json",
   };
 
@@ -47,72 +47,76 @@ function consume(imagen) {
     .post(PREDICTION_URL, body, { headers })
     .then((response) => {
       const result = response.data;
-      const items = result.predictions;
 
-      // Crear un canvas para mostrar las coordenadas de detección
-      const canvas = document.createElement("canvas");
-      canvas.width = newImg.width;
-      canvas.height = newImg.height;
-      const context = canvas.getContext("2d");
-      context.drawImage(newImg, 0, 0);
+      console.log('Success...');
+      console.log(result);
 
-      // Dibujar las coordenadas de detección en el canvas
-      items.forEach((element) => {
-        if (element.probability > 0.9) {
-          const nombre = element.tagName;
-          const probabilidad = element.probability;
-          const porcentaje = probabilidad * 100;
 
-          // Las coordenadas de detección generalmente se encuentran en element.boundingBox
-          const boundingBox = element.boundingBox;
+      // // Crear un canvas para mostrar las coordenadas de detección
+      // const canvas = document.createElement("canvas");
+      // canvas.width = newImg.width;
+      // canvas.height = newImg.height;
+      // const context = canvas.getContext("2d");
+      // context.drawImage(newImg, 0, 0);
 
-          const originalImgWidth = newImg.naturalWidth;
-          const originalImgHeight = newImg.naturalHeight;
+      
+      // // Dibujar las coordenadas de detección en el canvas
+      // items.forEach((element) => {
+      //   if (element.probability > 0.9) {
+      //     const nombre = element.tagName;
+      //     const probabilidad = element.probability;
+      //     const porcentaje = probabilidad * 100;
 
-          context.rect(
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight,
-            boundingBox.width * originalImgWidth,
-            boundingBox.height * originalImgHeight
-          );
-          context.lineWidth = 2;
-          context.strokeStyle = "red";
-          context.fillStyle = "red";
-          context.stroke();
+      //     // Las coordenadas de detección generalmente se encuentran en element.boundingBox
+      //     const boundingBox = element.boundingBox;
 
-          context.fillStyle = "red"; // Color y opacidad del fondo
-          context.fillRect(
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight - 20, // Ajustar la posición vertical del fondo
-            context.measureText(nombre).width + 65, // Ancho del fondo (basado en el texto)
-            20 // Altura del fondo
-          );
+      //     const originalImgWidth = newImg.naturalWidth;
+      //     const originalImgHeight = newImg.naturalHeight;
 
-          // Agregar etiqueta al cuadro de detección
-          context.font = "16px Arial";
-          context.fillStyle = "white";
-          context.fillText(
-            nombre,
-            boundingBox.left * originalImgWidth,
-            boundingBox.top * originalImgHeight + -5
-          );
+      //     context.rect(
+      //       boundingBox.left * originalImgWidth,
+      //       boundingBox.top * originalImgHeight,
+      //       boundingBox.width * originalImgWidth,
+      //       boundingBox.height * originalImgHeight
+      //     );
+      //     context.lineWidth = 2;
+      //     context.strokeStyle = "red";
+      //     context.fillStyle = "red";
+      //     context.stroke();
 
-          // Agregar otro comentario aquí
-          // Puedes personalizar el estilo del texto y su posición
-          context.font = "16px Arial";
-          context.fillStyle = "white";
-          context.fillText(
-            porcentaje.toFixed(0) + '%',
-            boundingBox.left * originalImgWidth + 52,
-            boundingBox.top * originalImgHeight - 5
-          );
-          console.log("Prediccion realizada con exito...");
-        }
-      });
+      //     context.fillStyle = "red"; // Color y opacidad del fondo
+      //     context.fillRect(
+      //       boundingBox.left * originalImgWidth,
+      //       boundingBox.top * originalImgHeight - 20, // Ajustar la posición vertical del fondo
+      //       context.measureText(nombre).width + 65, // Ancho del fondo (basado en el texto)
+      //       20 // Altura del fondo
+      //     );
 
-      // Limpiar el contenido anterior y agregar la nueva imagen con las coordenadas de detección
-      imagenContainer.innerHTML = '';
-      imagenContainer.appendChild(canvas);
+      //     // Agregar etiqueta al cuadro de detección
+      //     context.font = "16px Arial";
+      //     context.fillStyle = "white";
+      //     context.fillText(
+      //       nombre,
+      //       boundingBox.left * originalImgWidth,
+      //       boundingBox.top * originalImgHeight + -5
+      //     );
+
+      //     // Agregar otro comentario aquí
+      //     // Puedes personalizar el estilo del texto y su posición
+      //     context.font = "16px Arial";
+      //     context.fillStyle = "white";
+      //     context.fillText(
+      //       porcentaje.toFixed(0) + '%',
+      //       boundingBox.left * originalImgWidth + 52,
+      //       boundingBox.top * originalImgHeight - 5
+      //     );
+      //     console.log("Prediccion realizada con exito...");
+      //   }
+      // });
+
+      // // Limpiar el contenido anterior y agregar la nueva imagen con las coordenadas de detección
+      // imagenContainer.innerHTML = '';
+      // imagenContainer.appendChild(canvas);
     })
     .catch((error) => {
       console.error(error);
