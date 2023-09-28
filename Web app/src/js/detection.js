@@ -118,7 +118,7 @@ async function consume(imagen, newImage, contendor) {
 
       // Dibujar las coordenadas de detección en el canvas
       items.forEach((element) => {
-        if (element.probability > 0.83) {
+        if (element.probability > 0.9) {
           const nombre = element.tagName;
           const probabilidad = element.probability;
           const porcentaje = probabilidad * 100;
